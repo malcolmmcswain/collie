@@ -1,51 +1,104 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>My App</title>
+    <title>Collie</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
     <link rel="stylesheet" href="app.min.css">
     <style>
-      /* TODO */
+
+      @-webkit-keyframes pulse {
+        0% {
+          background-color: #CCC;
+        }
+        25% {
+          background-color: #EEE;
+        }
+        50% {
+          background-color: #CCC;
+        }
+        75% {
+          background-color: #EEE;
+        }
+        100% {
+          background-color: #CCC;
+        }
+      }
+
+      .input-description {
+        text-align: center;
+        margin-top: 50px;
+        font-weight: bold;
+      }
+      .input-spacing { margin-bottom: 250px; }
+      .button-fixed-above, .button-fixed-below { position: fixed; width: 100%; bottom: 0;}
+      .button-fixed-above { margin-bottom: 50px; }
+
     </style>
   </head>
 
   <body>
-    <div class="app-page" data-page="home">
-      <div class="app-topbar">
-        <div class="app-title">Home page</div>
+    <div class="app-page" data-page="landing">
+      <div class="app-topbar purple">
+        <div class="app-title">Landing</div>
       </div>
       <div class="app-content">
-        <div class="app-section">
-          <div class="app-button" data-target="page2">Go to Page 2</div>
-        </div>
+          <div class="app-button red button-fixed-above" data-target="signup">Sign up</div>
+          <div class="app-button green button-fixed-below" data-target="login">Login</div>
       </div>
     </div>
 
-    <div class="app-page" data-page="page2">
+    <div class="app-page" data-page="login">
       <div class="app-topbar">
         <div class="app-button left" data-back data-autotitle></div>
-        <div class="app-title">Page 2</div>
+        <div class="app-title">Login</div>
       </div>
       <div class="app-content">
-        Page 2 is lonely
+
+        <!-- Login -->
+        <div class="input-description">Username</div>
+        <div class="app-section">
+          <input class="app-input" placeholder="Enter your username">
+        </div>
+
+        <div class="input-description">Password</div>
+        <div class="app-section input-spacing">
+          <input class="app-input" placeholder="Enter your password">
+        </div>
+
+        <div class="app-button green app-submit">Log in</div>
+      </div>
+    </div>
+
+    <div class="app-page" data-page="signup">
+      <div class="app-topbar">
+        <div class="app-button left" data-back data-autotitle></div>
+        <div class="app-title">Sign up</div>
+      </div>
+      <div class="app-content">
+        <!-- Sign up -->
+
       </div>
     </div>
 
     <script src="zepto.js"></script>
     <script src="app.min.js"></script>
     <script>
-      App.controller('home', function (page) {
+      App.controller('landing', function (page) {
         // put stuff here
       });
 
-      App.controller('page2', function (page) {
+      App.controller('login', function (page) {
+        // put stuff here
+      });
+
+      App.controller('signup', function (page) {
         // put stuff here
       });
 
       try {
         App.restore();
       } catch (err) {
-        App.load('home');
+        App.load('landing');
       }
     </script>
   </body>
