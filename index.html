@@ -29,45 +29,28 @@
         margin-top: 50px;
         font-weight: bold;
       }
-      .input-spacing { margin-bottom: 250px; }
-      .button-fixed-above, .button-fixed-below { position: fixed; width: 100%; bottom: 0;}
-      .button-fixed-above { margin-bottom: 50px; }
-
+      .input-spacing { margin-bottom: 100px; }
+      .button-spacing { margin-top: 200px; }
+      .app-section-splash { top: 50%; }
+      .splash-header { text-align: center; }
     </style>
   </head>
 
   <body>
-    <div class="app-page" data-page="landing">
-      <div class="app-topbar purple">
-        <div class="app-title">Landing</div>
-      </div>
+
+    <!-- Splash Page -->
+
+    <div class="app-page" data-page="splash">
       <div class="app-content">
-          <div class="app-button red button-fixed-above" data-target="signup">Sign up</div>
-          <div class="app-button green button-fixed-below" data-target="login">Login</div>
+        <h1 class="splash-header">Collie</h1>
+        <div class="app-section app-section-splash">
+          <div class="app-button red button-spacing" data-target="signup">Sign up</div>
+          <div class="app-button green" data-target="login">Login</div>
+        </div>
       </div>
     </div>
 
-    <div class="app-page" data-page="login">
-      <div class="app-topbar">
-        <div class="app-button left" data-back data-autotitle></div>
-        <div class="app-title">Login</div>
-      </div>
-      <div class="app-content">
-
-        <!-- Login -->
-        <div class="input-description">Username</div>
-        <div class="app-section">
-          <input class="app-input" placeholder="Enter your username">
-        </div>
-
-        <div class="input-description">Password</div>
-        <div class="app-section input-spacing">
-          <input class="app-input" placeholder="Enter your password">
-        </div>
-
-        <div class="app-button green app-submit">Log in</div>
-      </div>
-    </div>
+    <!-- Sign up Page -->
 
     <div class="app-page" data-page="signup">
       <div class="app-topbar">
@@ -75,20 +58,67 @@
         <div class="app-title">Sign up</div>
       </div>
       <div class="app-content">
-        <!-- Sign up -->
-
+        <div class="input-description">Email</div>
+        <div class="app-section">
+          <input class="app-input" placeholder="Enter your email">
+        </div>
+        <div class="input-description">Username</div>
+        <div class="app-section">
+          <input class="app-input" placeholder="Enter your username">
+        </div>
+        <div class="input-description">Password</div>
+        <div class="app-section input-spacing">
+          <input class="app-input" type="password" placeholder="Enter your password">
+        </div>
+        <div class="app-button green app-submit">Log in</div>
       </div>
     </div>
+
+    <!--Login Page -->
+
+    <div class="app-page" data-page="login">
+      <div class="app-topbar">
+        <div class="app-button left" data-back data-autotitle></div>
+        <div class="app-title">Login</div>
+      </div>
+      <div class="app-content">
+        <div class="input-description">Username</div>
+        <div class="app-section">
+          <input class="app-input" placeholder="Enter your username">
+        </div>
+        <div class="input-description">Password</div>
+        <div class="app-section input-spacing">
+          <input class="app-input" type="password" placeholder="Enter your password">
+        </div>
+        <div class="app-button green app-submit">Log in</div>
+      </div>
+    </div>
+
+    <!-- Script -->
 
     <script src="zepto.js"></script>
     <script src="app.min.js"></script>
     <script>
-      App.controller('landing', function (page) {
+      App.controller('splash', function (page) {
         // put stuff here
       });
 
       App.controller('login', function (page) {
-        // put stuff here
+        // trigger prompt
+        $(page)
+          .find('.app-submit')
+          .on('click', function() {
+            App.dialog({
+                title        : 'Save Password',
+                text         : 'Would you like to stay logged in?',
+                okButton     : 'Sure!',
+                cancelButton : 'Nah.'
+              }, function (tryAgain) {
+                if (tryAgain) {
+                  // try again
+                }
+              });
+            });
       });
 
       App.controller('signup', function (page) {
@@ -98,7 +128,7 @@
       try {
         App.restore();
       } catch (err) {
-        App.load('landing');
+        App.load('splash');
       }
     </script>
   </body>
