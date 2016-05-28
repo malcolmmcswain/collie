@@ -23,7 +23,31 @@ App.controller('login', function (page) {
 });
 
 App.controller('signup', function (page) {
-  // put stuff here
+  $(page)
+    .find('.app-submit')
+    .on('click', function() {
+      $.ajax({
+        type: 'GET',
+        url: 'http://collie.planetm-app.com/register.php?callback=response',
+        data: { username: $('#username').val(), password: $('#password').val(), email: $('#email').val() },
+        dataType: 'jsonp',
+        timeout: 300,
+        context: $('body'),
+        success: function(data) {
+          if (data.success == true) {
+            
+            userIsLoggedIn = true;
+            App.load('main');
+
+          } else {
+
+          }
+        },
+        error: function(xhr, type) {
+          alert('Ajax error!');
+        }
+      })
+    });
 });
 
 App.controller('main', function (page) {
@@ -45,7 +69,7 @@ App.controller('main', function (page) {
 });
 
 try {
-  App.restore();
+  App.load('splash');
 } catch (err) {
   if (userIsLoggedIn == true) {
     App.load('main');
