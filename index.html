@@ -69,38 +69,6 @@
 
     <script src="zepto.js"></script>
     <script src="app.min.js"></script>
-    <script>
-      App.controller('splash', function (page) {
-        // put stuff here
-      });
-
-      App.controller('login', function (page) {
-        // trigger prompt
-        $(page)
-          .find('.app-submit')
-          .on('click', function() {
-            App.dialog({
-                title        : 'Save Password',
-                text         : 'Would you like to stay logged in?',
-                okButton     : 'Sure!',
-                cancelButton : 'Nah.'
-              }, function (tryAgain) {
-                if (tryAgain) {
-                  // try again
-                }
-              });
-            });
-      });
-
-      App.controller('signup', function (page) {
-        // put stuff here
-      });
-
-      try {
-        App.restore();
-      } catch (err) {
-        App.load('splash');
-      }
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
