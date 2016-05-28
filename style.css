@@ -1,0 +1,60 @@
+
+/* Transition */
+
+@-webkit-keyframes pulse {
+  0% {
+    background-color: #CCC;
+  }
+  25% {
+    background-color: #EEE;
+  }
+  50% {
+    background-color: #CCC;
+  }
+  75% {
+    background-color: #EEE;
+  }
+  100% {
+    background-color: #CCC;
+  }
+}
+
+/* Input Styles */
+
+.input-description {
+  text-align: center;
+  margin-top: 50px;
+  font-weight: bold;
+}
+
+.input-spacing { margin-bottom: 100px; }
+.button-spacing { margin-top: 200px; }
+.app-section-splash { top: 50%; }
+.splash-header { text-align: center; }
+
+/* Bottom Nav */
+
+#tab2 { margin-left: 33.33%; }
+#tab3 { margin-left: 66.66%; }
+
+ul.bottom-nav li[data-colour="orange"] { background: #E82; }
+ul.bottom-nav li[data-colour="white"] { background: #FFF; }
+
+ul.bottom-nav li {
+  position: fixed;
+  display: block;
+  float: left;
+  height: 54px;
+  width: 33.33%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  bottom: 0;
+}
+
+ul.bottom-nav li.active:before {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.1);
+  content: "";
+}
